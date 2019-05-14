@@ -1,0 +1,19 @@
+[
+  {
+    "modid": "dragons-rtb",
+    "name": "Dragons - Return to Berk",
+    "description": "Brings the would of Hiccup and his adorable Flying Black Lizard into the world of Minecraft!",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "https://github.com/NRD-inc/Dragons-RTB",
+    "updateUrl": "",
+    "authorList": [
+      "NukeRubberDucky",
+      "yooksi"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
