@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "httymd:dragon_nip"
+    }
+  ],
+  "result": {
+    "item": "httymd:dragon_nip_seed",
+    "count": 1
+  }
+}

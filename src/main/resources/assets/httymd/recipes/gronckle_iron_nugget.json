@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "httymd:gronckle_iron_ingot"
+    }
+  ],
+  "result": {
+    "item": "httymd:gronckle_iron_nugget",
+    "count": 9
+  }
+}

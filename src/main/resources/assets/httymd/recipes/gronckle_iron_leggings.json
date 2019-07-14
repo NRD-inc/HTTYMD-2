@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "G G",
+    "G G"
+  ],
+  "key": {
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "ingotGronckleIron"
+    }
+  },
+  "result": {
+    "item": "httymd:gronckle_iron_leggings"
+  }
+}

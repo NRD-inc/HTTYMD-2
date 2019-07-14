@@ -1,19 +1,20 @@
 [
   {
-    "modid": "dragons-rtb",
-    "name": "Dragons - Return to Berk",
+    "modid": "httymd",
+    "name": "How to Train Your Minecraft Dragon 2",
     "description": "Brings the would of Hiccup and his adorable Flying Black Lizard into the world of Minecraft!",
     "version": "${version}",
     "mcversion": "${mcversion}",
-    "url": "https://github.com/NRD-inc/Dragons-RTB",
+    "url": "https://www.httymd.com/",
     "updateUrl": "",
     "authorList": [
       "NukeRubberDucky",
-      "yooksi"
+      "yooksi",
+	  "Mnesikos"
     ],
     "credits": "",
     "logoFile": "",
     "screenshots": [],
-    "dependencies": []
+    "dependencies": ["forge"]
   }
 ]
