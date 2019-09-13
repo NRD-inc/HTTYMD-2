@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "GSG",
+    "GGG"
+  ],
+  "key": {
+    "G": {
+      "item": "dirt"
+    },
+    "S": {
+      "item": "water_bucket"
+    }
+  },
+  "result": {
+    "item": "httymd:mud",
+    "count": 8
+  }
+}
