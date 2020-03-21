@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"ISI",
+		"ISI",
+		" S "
+	],
+	"key":
+	{
+		"I": { "item": "minecraft:cobblestone" },
+		"S": { "item": "minecraft:stick" }
+	},
+	
+	"result": { "item": "httymd:stone_battleaxe" }
+}

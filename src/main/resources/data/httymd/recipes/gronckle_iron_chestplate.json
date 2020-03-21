@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"III",
+		"III",
+		"III"
+	],
+	"key":
+	{
+		"I": { "item": "httymd:gronckle_iron_nugget" }
+	},
+	
+	"result": { "item": "httymd:gronckle_iron" }
+}

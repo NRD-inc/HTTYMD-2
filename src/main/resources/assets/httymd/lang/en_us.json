@@ -1,0 +1,40 @@
+{
+	"item.httymd.gronckle_iron": "Gronckle Iron",
+	"item.httymd.gronckle_iron_nugget": "Gronckle Iron Nugget",
+	
+	"item.httymd.gronckle_iron_axe": "Gronckle Iron Axe",
+	"item.httymd.gronckle_iron_pickaxe": "Gronckle Iron Pickaxe",
+	"item.httymd.gronckle_iron_sword": "Gronckle Iron Sword",
+	"item.httymd.gronckle_iron_shovel": "Gronckle Iron Shovel",
+	"item.httymd.gronckle_iron_hoe": "Gronckle Iron Hoe",
+	"item.httymd.gronckle_iron_dagger": "Gronckle Iron Dagger",
+	"item.httymd.gronckle_iron_warhammer": "Gronckle Iron Warhammer",
+	"item.httymd.gronckle_iron_battleaxe": "Gronckle Iron Battleaxe",
+	
+	"item.httymd.wood_dagger": "Wooden Dagger",
+	"item.httymd.stone_dagger": "Stone Dagger",
+	"item.httymd.iron_dagger": "Iron Dagger",
+	"item.httymd.gold_dagger": "Gold Dagger",
+	"item.httymd.diamond_dagger": "Diamond Dagger",
+	"item.httymd.wood_warhammer": "Wooden Warhammer",
+	"item.httymd.stone_warhammer": "Stone Warhammer",
+	"item.httymd.iron_warhammer": "Iron Warhammer",
+	"item.httymd.gold_warhammer": "Gold Warhammer",
+	"item.httymd.diamond_warhammer": "Diamond Warhammer",
+	"item.httymd.wood_battleaxe": "Wooden Battleaxe",
+	"item.httymd.stone_battleaxe": "Stone Battleaxe",
+	"item.httymd.iron_battleaxe": "Iron Battleaxe",
+	"item.httymd.gold_battleaxe": "Gold Battleaxe",
+	"item.httymd.diamond_battleaxe": "Diamond Battleaxe",
+	
+	"item.httymd.gronckle_iron_helmet": "Gronckle Iron Helmet",
+	"item.httymd.gronckle_iron_chestplate": "Gronckle Iron Chestplate",
+	"item.httymd.gronckle_iron_leggings": "Gronckle Iron Leggings",
+	"item.httymd.gronckle_iron_boots": "Gronckle Iron Boots",
+	
+	"block.httymd.mud_block": "Mud",
+	
+	"itemGroup.DragonItemGroup": "How To Train Your Minecraft Dragon",
+	
+	"attribute.name.generic.reachDistance": "Attack Range"
+}

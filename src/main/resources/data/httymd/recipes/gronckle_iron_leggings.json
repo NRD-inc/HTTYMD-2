@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"III",
+		"I I",
+		"I I"
+	],
+	"key":
+	{
+		"I": { "item": "httymd:gronckle_iron" }
+	},
+	
+	"result": { "item": "httymd:gronckle_iron_leggings" }
+}

@@ -1,6 +1,6 @@
 {
-  "parent": "item/handheld",
-  "textures": {
-    "layer0": "httymd:items/gronckle_iron_sword"
-  }
+	"parent": "item/handheld",
+	"textures": {
+		"layer0": "httymd:item/gronckle_iron_sword"
+	}
 }
