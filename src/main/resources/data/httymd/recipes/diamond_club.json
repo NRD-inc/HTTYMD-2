@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"II",
+		"II",
+		" S"
+	],
+	"key":
+	{
+		"I": { "item": "minecraft:diamond" },
+		"S": { "item": "minecraft:stick" }
+	},
+	
+	"result": { "item": "httymd:diamond_club" }
+}

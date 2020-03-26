@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		" I",
+		"III",
+		" S"
+	],
+	"key":
+	{
+		"I": { "item": "minecraft:birch_planks" },
+		"S": { "item": "minecraft:stick" }
+	},
+	
+	"result": { "item": "httymd:wood_mace" }
+}

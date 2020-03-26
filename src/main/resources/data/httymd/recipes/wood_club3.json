@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"II",
+		"II",
+		" S"
+	],
+	"key":
+	{
+		"I": { "item": "minecraft:dark_oak_planks" },
+		"S": { "item": "minecraft:stick" }
+	},
+	
+	"result": { "item": "httymd:wood_club" }
+}
