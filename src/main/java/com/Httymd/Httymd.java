@@ -3,15 +3,18 @@ package com.Httymd;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.Httymd.client.render.HttymdRenderRegistry;
 import com.Httymd.items.ItemDagger;
 import com.Httymd.lists.ArmorMaterialList;
 import com.Httymd.lists.BlockList;
+import com.Httymd.lists.Entities;
 import com.Httymd.lists.ItemList;
 import com.Httymd.lists.ToolMaterialList;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.AxeItem;
@@ -24,6 +27,7 @@ import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -91,6 +95,8 @@ public class Httymd {
 					ItemList.gronckle_iron_dagger = new ItemDagger(ToolMaterialList.Gronckle, -2, 3.5F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("gronckle_iron_dagger")),
 					ItemList.gronckle_iron_warhammer = new SwordItem(ToolMaterialList.Gronckle, +3, -3.0F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("gronckle_iron_warhammer")),
 					ItemList.gronckle_iron_battleaxe = new SwordItem(ToolMaterialList.Gronckle, +2, -2.5F, new  Item.Properties().group(DragonItemGroup)).setRegistryName(location("gronckle_iron_battleaxe")),
+					ItemList.gronckle_iron_club = new SwordItem(ToolMaterialList.Gronckle, +2, -2.5F, new  Item.Properties().group(DragonItemGroup)).setRegistryName(location("gronckle_iron_club")),
+					ItemList.gronckle_iron_mace = new SwordItem(ToolMaterialList.Gronckle, +2, -2.5F, new  Item.Properties().group(DragonItemGroup)).setRegistryName(location("gronckle_iron_mace")),
 					
 					//Defalt Minecraft material tools
 					//To use default minecraft materials, do this: \/ \/
@@ -99,16 +105,21 @@ public class Httymd {
 					ItemList.iron_dagger = new ItemDagger(ItemTier.IRON, -0, 3.5F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("iron_dagger")),
 					ItemList.gold_dagger = new ItemDagger(ItemTier.GOLD, -0, 3.5F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("gold_dagger")),
 					ItemList.diamond_dagger = new ItemDagger(ItemTier.DIAMOND, -0, 3.5F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("diamond_dagger")),
-					ItemList.stone_warhammer = new SwordItem(ItemTier.STONE, +5, -3.0F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("stone_warhammer")),
-					ItemList.wood_warhammer = new SwordItem(ItemTier.WOOD, +5, -3.0F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("wood_warhammer")),
-					ItemList.iron_warhammer = new SwordItem(ItemTier.IRON, +5, -3.0F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("iron_warhammer")),
-					ItemList.gold_warhammer = new SwordItem(ItemTier.GOLD, +5, -3.0F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("gold_warhammer")),
-					ItemList.diamond_warhammer = new SwordItem(ItemTier.DIAMOND, +5, -3.0F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("diamond_warhammer")),
 					ItemList.stone_battleaxe = new SwordItem(ItemTier.STONE, +5, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("stone_battleaxe")),
 					ItemList.wood_battleaxe = new SwordItem(ItemTier.WOOD, +4, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("wood_battleaxe")),
 					ItemList.iron_battleaxe = new SwordItem(ItemTier.IRON, +4, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("iron_battleaxe")),
 					ItemList.gold_battleaxe = new SwordItem(ItemTier.GOLD, +4, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("gold_battleaxe")),
 					ItemList.diamond_battleaxe = new SwordItem(ItemTier.DIAMOND, +4, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("diamond_battleaxe")),
+					ItemList.stone_club = new SwordItem(ItemTier.STONE, +4, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("stone_club")),
+					ItemList.wood_club = new SwordItem(ItemTier.WOOD, +3, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("wood_club")),
+					ItemList.iron_club = new SwordItem(ItemTier.IRON, +3, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("iron_club")),
+					ItemList.gold_club = new SwordItem(ItemTier.GOLD, +3, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("gold_club")),
+					ItemList.diamond_club = new SwordItem(ItemTier.DIAMOND, +3, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("diamond_club")),
+					ItemList.stone_mace = new SwordItem(ItemTier.STONE, +4, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("stone_mace")),
+					ItemList.wood_mace = new SwordItem(ItemTier.WOOD, +3, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("wood_mace")),
+					ItemList.iron_mace = new SwordItem(ItemTier.IRON, +3, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("iron_mace")),
+					ItemList.gold_mace = new SwordItem(ItemTier.GOLD, +3, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("gold_mace")),
+					ItemList.diamond_mace = new SwordItem(ItemTier.DIAMOND, +3, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("diamond_mace")),
 					
 					//Armor
 					ItemList.gronckle_iron_helmet = new ArmorItem(ArmorMaterialList.GronckleArmor, EquipmentSlotType.HEAD, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("gronckle_iron_helmet")),
@@ -118,7 +129,9 @@ public class Httymd {
 					
 					//This section of item imports is used for importing blocks as items
 					ItemList.mud_block = new BlockItem(BlockList.mud_block, new Item.Properties().group(DragonItemGroup)).setRegistryName(BlockList.mud_block.getRegistryName())
-			);
+			);			
+			Entities.registerEntitySpawnEggs(event);
+			
 			logger.info("Items Registered");
 		}
 		
@@ -131,9 +144,26 @@ public class Httymd {
 			);
 			logger.info("Blocks Registered");
 		}
-		//This is a function that replaces what would normally be in .setRegistryName to keep things cleaner
-		private static ResourceLocation location(String name) {
-			return new ResourceLocation(modid, name);
+		
+		//Entity Registry
+		@SubscribeEvent
+		public static void registerEntities(final RegistryEvent.Register<EntityType<?>> event) {
+			event.getRegistry().registerAll(
+					Entities.TERRIBLE_TERROR
+			);
+			Entities.registerEntityWorldSpawns();
+			
+			logger.info("Entities Registered");
 		}
+		
+		@SubscribeEvent
+		public static void registerRenders(final ModelRegistryEvent event) {
+			HttymdRenderRegistry.registerEntityRenders();
+		}
+	}
+		
+	//This is a function that replaces what would normally be in .setRegistryName to keep things cleaner
+	public static ResourceLocation location(String name) {
+		return new ResourceLocation(modid, name);
 	}
 }
