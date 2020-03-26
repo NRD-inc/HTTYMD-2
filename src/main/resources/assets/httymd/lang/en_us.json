@@ -34,6 +34,12 @@
 	
 	"block.httymd.mud_block": "Mud",
 	
+	"entity.minecraft.terrible_terror": "Terrible Terror",
+	"entity.minecraft.yak": "Yak",
+	
+	"item.httymd.terrible_terror_spawn_egg": "Spawn Terrible Terror",
+	"item.httymd.yak_spawn_egg": "Spawn Yak",
+	
 	"itemGroup.DragonItemGroup": "How To Train Your Minecraft Dragon",
 	
 	"attribute.name.generic.reachDistance": "Attack Range"
