@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "httymd:block/loki_log_top",
+        "side": "httymd:block/loki_log_side"
+    }
+}

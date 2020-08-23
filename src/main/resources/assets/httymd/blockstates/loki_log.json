@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y":    { "model": "httymd:block/loki_log" },
+        "axis=z":     { "model": "httymd:block/loki_log", "x": 90 },
+        "axis=x":     { "model": "httymd:block/loki_log", "x": 90, "y": 90 }
+    }
+}

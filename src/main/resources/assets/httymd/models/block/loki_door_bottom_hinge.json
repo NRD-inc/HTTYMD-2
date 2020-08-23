@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_bottom_rh",
+    "textures": {
+        "bottom": "httyd:block/loki_door_bottom",
+        "top": "httyd:block/loki_door_top"
+    }
+}

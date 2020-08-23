@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y":    { "model": "httymd:block/pine_log" },
+        "axis=z":     { "model": "httymd:block/pine_log", "x": 90 },
+        "axis=x":     { "model": "httymd:block/pine_log", "x": 90, "y": 90 }
+    }
+}
