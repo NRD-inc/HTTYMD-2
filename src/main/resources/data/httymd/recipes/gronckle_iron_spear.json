@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		" II",
+		" SI",
+		"S  "
+	],
+	"key":
+	{
+		"I": { "item": "httymd:gronckle_iron" },
+		"S": { "item": "minecraft:stick" }
+	},
+	
+	"result": { "item": "httymd:gronckle_iron_spear" }
+}
