@@ -23,10 +23,11 @@ public class ItemDagger extends SwordItem {
 		super(tier, attackDamage, attackSpeedIn, builder);
 	}
 	
+	@Override
 	public Multimap<String, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
 	      Multimap<String, AttributeModifier> multimap = super.getAttributeModifiers(equipmentSlot);
 	      if (equipmentSlot == EquipmentSlotType.MAINHAND) {
-	         multimap.put(ItemDagger.DAGGER_REACH.getName(), new AttributeModifier(ATTACK_RANGE_MODIFIER, "Tool modifier", (double)this.attackRange, AttributeModifier.Operation.ADDITION));
+	         multimap.put(ItemDagger.DAGGER_REACH.getName(), new AttributeModifier(ATTACK_RANGE_MODIFIER, "Tool modifier", this.attackRange, AttributeModifier.Operation.ADDITION));
 	      }
 
 	      return multimap;
