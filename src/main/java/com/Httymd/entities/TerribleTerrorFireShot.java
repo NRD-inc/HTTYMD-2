@@ -4,16 +4,21 @@ import java.util.UUID;
 
 import com.Httymd.lists.Entities;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.IProjectile;
+import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.projectile.DamagingProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileHelper;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.play.server.SSpawnObjectPacket;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceContext;
@@ -23,7 +28,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
 
-public class TerribleTerrorFireShot extends Entity implements IProjectile {
+public class TerribleTerrorFireShot extends DamagingProjectileEntity implements IProjectile {
 	public EntityTerribleTerror owner;
 	private CompoundNBT ownerNBT;
 	
@@ -60,7 +65,7 @@ public class TerribleTerrorFireShot extends Entity implements IProjectile {
 	         return !p_213879_1_.isSpectator() && p_213879_1_ != this.owner;
 	      }, RayTraceContext.BlockMode.OUTLINE, true);
 	      if (raytraceresult != null && raytraceresult.getType() != RayTraceResult.Type.MISS && !net.minecraftforge.event.ForgeEventFactory.onProjectileImpact(this, raytraceresult)) {
-	         this.onHit(raytraceresult);
+	         this.onImpact(raytraceresult);
 	      }
 
 	      this.posX += vec3d.x;
@@ -116,28 +121,19 @@ public class TerribleTerrorFireShot extends Entity implements IProjectile {
 	      }
 	      this.ownerNBT = null;
 		}
-	      public void onHit(RayTraceResult result) {
-	          RayTraceResult.Type raytraceresult$type = result.getType();
-	          if (raytraceresult$type == RayTraceResult.Type.ENTITY && this.owner != null) {
-	             ((EntityRayTraceResult)result).getEntity().attackEntityFrom(DamageSource.causeIndirectDamage(this, this.owner).setProjectile(), 10.0F);
-	          } else if (raytraceresult$type == RayTraceResult.Type.BLOCK && !this.world.isRemote) {
-	             this.remove();
-	          }
-
-	       }
-	      
+		
 	      protected void registerData() {
 	      }
 
 	      
-	      protected void readAdditional(CompoundNBT compound) {
+	      public void readAdditional(CompoundNBT compound) {
 	         if (compound.contains("Owner", 10)) {
 	            this.ownerNBT = compound.getCompound("Owner");
 	         }
 
 	      }
 
-	      protected void writeAdditional(CompoundNBT compound) {
+	      public void writeAdditional(CompoundNBT compound) {
 	         if (this.owner != null) {
 	            CompoundNBT compoundnbt = new CompoundNBT();
 	            UUID uuid = this.owner.getUniqueID();
@@ -160,5 +156,33 @@ public class TerribleTerrorFireShot extends Entity implements IProjectile {
 		      this.rotationPitch = (float)(MathHelper.atan2(vec3d.y, (double)f) * (double)(180F / (float)Math.PI));
 		      this.prevRotationYaw = this.rotationYaw;
 		      this.prevRotationPitch = this.rotationPitch;
+		}
+
+		@Override
+		protected void onImpact(RayTraceResult result) {
+			if (!this.world.isRemote) {
+		         if (result.getType() == RayTraceResult.Type.ENTITY) {
+		            Entity entity = ((EntityRayTraceResult)result).getEntity();
+		            if (!entity.isImmuneToFire()) {
+		               int i = entity.func_223314_ad();
+		               entity.setFire(1);
+		               boolean flag = entity.attackEntityFrom(DamageSource.causeFireballDamage(this, this.shootingEntity), 7.0F);
+		               if (flag) {
+		                  this.applyEnchantments(this.shootingEntity, entity);
+		               } else {
+		                  entity.func_223308_g(i);
+		               }
+		            }
+		         } else if (this.shootingEntity == null || !(this.shootingEntity instanceof MobEntity) || net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.world, this.shootingEntity)) {
+		            BlockRayTraceResult blockraytraceresult = (BlockRayTraceResult)result;
+		            BlockPos blockpos = blockraytraceresult.getPos().offset(blockraytraceresult.getFace());
+		            if (this.world.isAirBlock(blockpos)) {
+		               this.world.setBlockState(blockpos, Blocks.FIRE.getDefaultState());
+		            }
+		         }
+
+		         this.remove();
+		      }
+			
 		}
 }

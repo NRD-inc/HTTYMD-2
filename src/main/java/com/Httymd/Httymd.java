@@ -3,8 +3,13 @@ package com.Httymd;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.Httymd.block.CustomDoor;
+import com.Httymd.block.CustomSapling;
+import com.Httymd.block.trees.LokiTree;
+import com.Httymd.block.trees.PineTree;
 import com.Httymd.client.render.HttymdRenderRegistry;
 import com.Httymd.items.ItemDagger;
+import com.Httymd.items.ItemSpear;
 import com.Httymd.lists.ArmorMaterialList;
 import com.Httymd.lists.BlockList;
 import com.Httymd.lists.Entities;
@@ -14,6 +19,7 @@ import com.Httymd.lists.ToolMaterialList;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
@@ -93,13 +99,12 @@ public class Httymd {
 					ItemList.gronckle_iron_shovel = new ShovelItem(ToolMaterialList.Gronckle, -1.5F, 6.0F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("gronckle_iron_shovel")),
 					ItemList.gronckle_iron_hoe = new HoeItem(ToolMaterialList.Gronckle, 0, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("gronckle_iron_hoe")),
 					ItemList.gronckle_iron_dagger = new ItemDagger(ToolMaterialList.Gronckle, -2, 3.5F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("gronckle_iron_dagger")),
-					ItemList.gronckle_iron_warhammer = new SwordItem(ToolMaterialList.Gronckle, +3, -3.0F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("gronckle_iron_warhammer")),
 					ItemList.gronckle_iron_battleaxe = new SwordItem(ToolMaterialList.Gronckle, +2, -2.5F, new  Item.Properties().group(DragonItemGroup)).setRegistryName(location("gronckle_iron_battleaxe")),
 					ItemList.gronckle_iron_club = new SwordItem(ToolMaterialList.Gronckle, +2, -2.5F, new  Item.Properties().group(DragonItemGroup)).setRegistryName(location("gronckle_iron_club")),
 					ItemList.gronckle_iron_mace = new SwordItem(ToolMaterialList.Gronckle, +2, -2.5F, new  Item.Properties().group(DragonItemGroup)).setRegistryName(location("gronckle_iron_mace")),
+					ItemList.gronckle_iron_spear = new ItemSpear(ToolMaterialList.Gronckle, +1.5F, -2, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("gronckle_iron_spear")),
 					
 					//Defalt Minecraft material tools
-					//To use default minecraft materials, do this: \/ \/
 					ItemList.stone_dagger = new ItemDagger(ItemTier.STONE, -0, 3.5F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("stone_dagger")),
 					ItemList.wood_dagger = new ItemDagger(ItemTier.WOOD, -0, 3.5F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("wood_dagger")),
 					ItemList.iron_dagger = new ItemDagger(ItemTier.IRON, -0, 3.5F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("iron_dagger")),
@@ -115,11 +120,14 @@ public class Httymd {
 					ItemList.iron_club = new SwordItem(ItemTier.IRON, +3, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("iron_club")),
 					ItemList.gold_club = new SwordItem(ItemTier.GOLD, +3, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("gold_club")),
 					ItemList.diamond_club = new SwordItem(ItemTier.DIAMOND, +3, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("diamond_club")),
-					ItemList.stone_mace = new SwordItem(ItemTier.STONE, +4, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("stone_mace")),
-					ItemList.wood_mace = new SwordItem(ItemTier.WOOD, +3, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("wood_mace")),
 					ItemList.iron_mace = new SwordItem(ItemTier.IRON, +3, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("iron_mace")),
 					ItemList.gold_mace = new SwordItem(ItemTier.GOLD, +3, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("gold_mace")),
 					ItemList.diamond_mace = new SwordItem(ItemTier.DIAMOND, +3, -2.8F, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("diamond_mace")),
+					ItemList.wood_spear = new ItemSpear(ItemTier.WOOD, +1.5F, -2, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("wood_spear")),
+					ItemList.stone_spear = new ItemSpear(ItemTier.STONE, +1.5F, -2, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("stone_spear")),
+					ItemList.iron_spear = new ItemSpear(ItemTier.IRON, +1.5F, -2, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("iron_spear")),
+					ItemList.gold_spear = new ItemSpear(ItemTier.GOLD, +1.5F, -2, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("gold_spear")),
+					ItemList.diamond_spear = new ItemSpear(ItemTier.DIAMOND, +1.5F, -2, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("diamond_spear")),
 					
 					//Armor
 					ItemList.gronckle_iron_helmet = new ArmorItem(ArmorMaterialList.GronckleArmor, EquipmentSlotType.HEAD, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("gronckle_iron_helmet")),
@@ -128,8 +136,20 @@ public class Httymd {
 					ItemList.gronckle_iron_boots = new ArmorItem(ArmorMaterialList.GronckleArmor, EquipmentSlotType.FEET, new Item.Properties().group(DragonItemGroup)).setRegistryName(location("gronckle_iron_boots")),
 					
 					//This section of item imports is used for importing blocks as items
-					ItemList.mud_block = new BlockItem(BlockList.mud_block, new Item.Properties().group(DragonItemGroup)).setRegistryName(BlockList.mud_block.getRegistryName())
-			);			
+					ItemList.mud_block = new BlockItem(BlockList.mud_block, new Item.Properties().group(DragonItemGroup)).setRegistryName(BlockList.mud_block.getRegistryName()),
+					ItemList.loki_sapling = new BlockItem(BlockList.loki_sapling, new Item.Properties().group(DragonItemGroup)).setRegistryName(BlockList.loki_sapling.getRegistryName()),
+					ItemList.loki_log = new BlockItem(BlockList.loki_log, new Item.Properties().group(DragonItemGroup)).setRegistryName(BlockList.loki_log.getRegistryName()),
+					ItemList.loki_plank = new BlockItem(BlockList.loki_plank, new Item.Properties().group(DragonItemGroup)).setRegistryName(BlockList.loki_plank.getRegistryName()),
+					ItemList.loki_stair = new BlockItem(BlockList.loki_stair, new Item.Properties().group(DragonItemGroup)).setRegistryName(BlockList.loki_stair.getRegistryName()),
+					ItemList.loki_door = new BlockItem(BlockList.loki_door, new Item.Properties().group(DragonItemGroup)).setRegistryName(BlockList.loki_door.getRegistryName()),
+					ItemList.loki_leaves = new BlockItem(BlockList.loki_leaves, new Item.Properties().group(DragonItemGroup)).setRegistryName(BlockList.loki_leaves.getRegistryName()),
+					ItemList.pine_sapling = new BlockItem(BlockList.pine_sapling, new Item.Properties().group(DragonItemGroup)).setRegistryName(BlockList.pine_sapling.getRegistryName()),
+					ItemList.pine_log = new BlockItem(BlockList.pine_log, new Item.Properties().group(DragonItemGroup)).setRegistryName(BlockList.pine_log.getRegistryName()),
+					ItemList.pine_plank = new BlockItem(BlockList.pine_plank, new Item.Properties().group(DragonItemGroup)).setRegistryName(BlockList.pine_plank.getRegistryName()),
+					ItemList.pine_stair = new BlockItem(BlockList.pine_stair, new Item.Properties().group(DragonItemGroup)).setRegistryName(BlockList.pine_stair.getRegistryName()),
+					ItemList.pine_door = new BlockItem(BlockList.pine_door, new Item.Properties().group(DragonItemGroup)).setRegistryName(BlockList.pine_door.getRegistryName()),
+					ItemList.pine_leaves = new BlockItem(BlockList.pine_leaves, new Item.Properties().group(DragonItemGroup)).setRegistryName(BlockList.pine_leaves.getRegistryName())
+			);
 			Entities.registerEntitySpawnEggs(event);
 			
 			logger.info("Items Registered");
@@ -140,16 +160,37 @@ public class Httymd {
 		public static void registerBlocks(final RegistryEvent.Register<Block> event) {
 			event.getRegistry().registerAll(
 					//Register all blocks here
-					BlockList.mud_block = new Block(Block.Properties.create(Material.SAND).hardnessAndResistance(0.5f).sound(SoundType.GROUND)).setRegistryName(location("mud_block"))
+					BlockList.mud_block = new Block(Block.Properties.create(Material.SAND).hardnessAndResistance(0.5f).sound(SoundType.GROUND)).setRegistryName(location("mud_block")),
+					BlockList.loki_log = new Block(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0f).sound(SoundType.WOOD)).setRegistryName(location("loki_log")),
+					BlockList.loki_plank = new Block(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(1.8f).sound(SoundType.WOOD)).setRegistryName(location("loki_plank")),
+					BlockList.loki_stair = new Block(Block.Properties.create(Material.WOOD).hardnessAndResistance(1.8f).sound(SoundType.WOOD)).setRegistryName(location("loki_stair")),
+					BlockList.loki_door = new CustomDoor(Block.Properties.create(Material.WOOD).hardnessAndResistance(3.0f).sound(SoundType.WOOD)).setRegistryName(location("loki_door")),
+					BlockList.loki_leaves = new Block(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.9f).sound(SoundType.PLANT)).setRegistryName(location("loki_leaves")),
+					BlockList.pine_sapling = new CustomSapling(new PineTree(), Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0f).sound(SoundType.PLANT).doesNotBlockMovement().tickRandomly()).setRegistryName(location("pine_sapling")),
+					BlockList.pine_log = new Block(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0f).sound(SoundType.WOOD)).setRegistryName(location("pine_log")),
+					BlockList.pine_plank = new Block(Block.Properties.create(Material.WOOD).hardnessAndResistance(1.8f).sound(SoundType.WOOD)).setRegistryName(location("pine_plank")),
+					BlockList.pine_stair = new Block(Block.Properties.create(Material.WOOD).hardnessAndResistance(1.8f).sound(SoundType.WOOD)).setRegistryName(location("pine_stair")),
+					BlockList.pine_door = new CustomDoor(Block.Properties.create(Material.WOOD).hardnessAndResistance(3.0f).sound(SoundType.WOOD)).setRegistryName(location("pine_door")),
+					BlockList.pine_leaves = new Block(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.9f).sound(SoundType.PLANT)).setRegistryName(location("pne_leaves")),
+					BlockList.loki_sapling = new CustomSapling(new LokiTree(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0f).sound(SoundType.PLANT)).setRegistryName(location("loki_sapling"))
 			);
+			
 			logger.info("Blocks Registered");
 		}
+		
+		//Particle Registry
+		
 		
 		//Entity Registry
 		@SubscribeEvent
 		public static void registerEntities(final RegistryEvent.Register<EntityType<?>> event) {
 			event.getRegistry().registerAll(
-					Entities.TERRIBLE_TERROR
+					Entities.TERRIBLE_TERROR,
+					Entities.YAK,
+					Entities.BOAR,
+					Entities.SPEAR,
+					Entities.TERRIBLE_TERROR_FIRE,
+					Entities.EEL
 			);
 			Entities.registerEntityWorldSpawns();
 			

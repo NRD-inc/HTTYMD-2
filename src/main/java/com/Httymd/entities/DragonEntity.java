@@ -1,6 +1,5 @@
 package com.Httymd.entities;
 
-import java.util.Random;
 import java.util.function.Predicate;
 
 import net.minecraft.entity.EntityType;
@@ -76,9 +75,8 @@ public abstract class DragonEntity extends TameableEntity implements IRangedAtta
 		if(this.MAX_VARS >= 1) {
 			return this.MAX_VARS;
 		}else{
-			Random rand = new Random();
-			//make sure this is set to the smallest number of dragon skins there are - 1
-			return rand.nextInt(5);
+			//make sure this is set to the smallest number of dragon skins there are
+			return 6;
 		}
 	}
 	
@@ -160,7 +158,27 @@ public abstract class DragonEntity extends TameableEntity implements IRangedAtta
 	      EntityType<?> entitytype = DragonPredicate.getType();
 	      return entitytype == EntityType.SHEEP || entitytype == EntityType.RABBIT;
 	   };
-	   
+	      
+	@Override
+	protected void registerGoals() {
+		this.goalSelector.addGoal(0, new SwimGoal(this));
+		this.goalSelector.addGoal(1, new PanicGoal(this, 0.6 + (this.getSpeed()) / 50));
+		this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, PlayerEntity.class, 8.0F, 1.2D, 1.1D));
+		this.goalSelector.addGoal(3, new LeapAtTargetGoal(this, 0.4F));
+		this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, true));
+		this.goalSelector.addGoal(5, new RangedAttackGoal(this, 2.0D, 1, 3.5F));
+		this.goalSelector.addGoal(6, new TemptGoal(this, 1.1D, Ingredient.fromItems(Items.COD, Items.SALMON, Items.TROPICAL_FISH), false));
+	    this.goalSelector.addGoal(7, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
+	    this.goalSelector.addGoal(8, new BreedGoal(this, 1.0D));
+	    this.goalSelector.addGoal(9, new WaterAvoidingRandomWalkingGoal(this, 1.2));
+		this.goalSelector.addGoal(10, new LookAtGoal(this, PlayerEntity.class, 8.0F));
+	    this.goalSelector.addGoal(11, new LookRandomlyGoal(this));
+	    this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
+	    this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
+	    this.targetSelector.addGoal(3, new HurtByTargetGoal(this, new Class[0]));
+	    this.targetSelector.addGoal(3, new NonTamedTargetGoal<>(this, AnimalEntity.class, false, DragonPredicate));
+	}
+	
 	@Override
 	protected void registerAttributes() {
 		super.registerAttributes();
@@ -172,26 +190,6 @@ public abstract class DragonEntity extends TameableEntity implements IRangedAtta
 		this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.2 + (this.getSpeed() / 50));
 		this.getAttributes().registerAttribute(SharedMonsterAttributes.ATTACK_SPEED);
 		this.getAttribute(SharedMonsterAttributes.ATTACK_SPEED).setBaseValue(((this.getHealth() /2 ) / this.getJawStrength()) * 0.3);
-	}
-	   
-	@Override
-	protected void registerGoals() {
-		this.goalSelector.addGoal(0, new SwimGoal(this));
-		this.goalSelector.addGoal(1, new PanicGoal(this, 0.6 + (this.getSpeed()) / 50));
-		this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, PlayerEntity.class, 8.0F, 1.2, 1.1));
-		this.goalSelector.addGoal(3, new LeapAtTargetGoal(this, 0.4F));
-		this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, true));
-		this.goalSelector.addGoal(5, new RangedAttackGoal(this, 2.0D, 1, 3.5F));
-		this.goalSelector.addGoal(6, new TemptGoal(this, 1.1D, Ingredient.fromItems(Items.COD, Items.SALMON, Items.TROPICAL_FISH), false));
-	    this.goalSelector.addGoal(7, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
-	    this.goalSelector.addGoal(8, new BreedGoal(this, 1.0D));
-	    this.goalSelector.addGoal(9, new WaterAvoidingRandomWalkingGoal(this, this.getSpeed()));
-		this.goalSelector.addGoal(10, new LookAtGoal(this, PlayerEntity.class, 8.0F));
-	    this.goalSelector.addGoal(11, new LookRandomlyGoal(this));
-	    this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
-	    this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
-	    this.targetSelector.addGoal(3, new HurtByTargetGoal(this, new Class[0]));
-	    this.targetSelector.addGoal(3, new NonTamedTargetGoal<>(this, AnimalEntity.class, false, DragonPredicate));
 	}
 	
 	@Override
