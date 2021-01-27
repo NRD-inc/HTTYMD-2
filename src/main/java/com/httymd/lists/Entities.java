@@ -44,7 +44,7 @@ public class Entities {
 
     //The egg specifications
     public static Item registerEntitySpawnEgg(EntityType<?> type, int color1, int color2, String name) {
-        SpawnEggItem item = new SpawnEggItem(type, color1, color2, new Item.Properties().group(Httymd.DragonItemGroup));
+        SpawnEggItem item = new SpawnEggItem(type, color1, color2, new Item.Properties().group(Httymd.dragonItemGroup));
         item.setRegistryName(Httymd.location(name));
         return item;
     }

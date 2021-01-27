@@ -48,7 +48,7 @@ public enum ArmorMaterialList implements IArmorMaterial {
     @Override
     public String getName() {
         // TODO Auto-generated method stub
-        return Httymd.modid + ":" + this.name;
+        return Httymd.MOD_ID + ":" + this.name;
     }
 
     @Override

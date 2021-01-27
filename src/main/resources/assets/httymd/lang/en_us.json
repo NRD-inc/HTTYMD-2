@@ -54,7 +54,7 @@
 	"item.httymd.boar_spawn_egg": "Spawn Boar",
 	"item.httymd.eel_spawn_egg": "Spawn Eel",
 	
-	"itemGroup.DragonItemGroup": "How To Train Your Minecraft Dragon",
+	"itemGroup.httymd.tab": "How To Train Your Minecraft Dragon",
 	
 	"attribute.name.generic.reachDistance": "Attack Range"
 }

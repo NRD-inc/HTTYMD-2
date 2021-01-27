@@ -24,28 +24,31 @@ public class CustomTridentItem extends TieredItem {
         super(tier, builder);
         this.attackDamage = attackDamageIn + tier.getAttackDamage();
         this.attackSpeed = attackSpeedIn;
-        this.addPropertyOverride(new ResourceLocation("ready"), (ItemStack, World, LivingEntity) -> {
-            if (LivingEntity == null) {
+        this.addPropertyOverride(new ResourceLocation("ready"), (itemStack, world, livingEntity) -> {
+            if (livingEntity == null) {
                 return 0.0F;
             } else {
-                return !(LivingEntity.getActiveItemStack().getItem() instanceof BowItem) ? 0.0F : (float) (ItemStack.getUseDuration() - LivingEntity.getItemInUseCount()) / 20.0F;
+                return !(livingEntity.getActiveItemStack().getItem() instanceof BowItem) ? 0.0F : (float) (itemStack.getUseDuration() - livingEntity.getItemInUseCount()) / 20.0F;
             }
         });
-        this.addPropertyOverride(new ResourceLocation("readying"), (ItemStack, World, LivingEntity) -> {
-            return LivingEntity != null && LivingEntity.isHandActive() && LivingEntity.getActiveItemStack() == ItemStack ? 1.0F : 0.0F;
+        this.addPropertyOverride(new ResourceLocation("readying"), (itemStack, world, livingEntity) -> {
+            return livingEntity != null && livingEntity.isHandActive() && livingEntity.getActiveItemStack() == itemStack ? 1.0F : 0.0F;
         });
     }
 
     //Needs nbt so it saves data after being thrown
 
-    public int getUseDuration(ItemStack stack) {
-        return 72000;
-    }
-
+    @Override
     public UseAction getUseAction(ItemStack stack) {
         return UseAction.BOW;
     }
 
+    @Override
+    public int getUseDuration(ItemStack stack) {
+        return 72000;
+    }
+
+    @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack itemstack = playerIn.getHeldItem(handIn);
         boolean flag = !findAmmo(itemstack, playerIn).isEmpty();
@@ -66,6 +69,7 @@ public class CustomTridentItem extends TieredItem {
         return spears;
     }
 
+    @Override
     public void onPlayerStoppedUsing(ItemStack stack, World worldIn, LivingEntity entityLiving, int timeLeft) {
         if (entityLiving instanceof PlayerEntity) {
             PlayerEntity playerentity = (PlayerEntity) entityLiving;
@@ -190,6 +194,7 @@ public class CustomTridentItem extends TieredItem {
     }
 
     @SuppressWarnings("deprecation")
+    @Override
     public Multimap<String, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
         Multimap<String, AttributeModifier> multimap = super.getAttributeModifiers(equipmentSlot);
         if (equipmentSlot == EquipmentSlotType.MAINHAND) {
