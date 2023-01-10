@@ -1,7 +1,0 @@
-{
-    "parent": "block/door_top",
-    "textures": {
-        "bottom": "httymd:block/pine_door_bottom",
-        "top": "httmyd:block/pine_door_top"
-    }
-}

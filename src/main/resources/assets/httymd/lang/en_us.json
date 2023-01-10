@@ -1,60 +1,11 @@
 {
-	"item.httymd.gronckle_iron": "Gronckle Iron",
-	"item.httymd.gronckle_iron_nugget": "Gronckle Iron Nugget",
-	
-	"item.httymd.gronckle_iron_axe": "Gronckle Iron Axe",
-	"item.httymd.gronckle_iron_pickaxe": "Gronckle Iron Pickaxe",
-	"item.httymd.gronckle_iron_sword": "Gronckle Iron Sword",
-	"item.httymd.gronckle_iron_shovel": "Gronckle Iron Shovel",
-	"item.httymd.gronckle_iron_hoe": "Gronckle Iron Hoe",
-	"item.httymd.gronckle_iron_dagger": "Gronckle Iron Dagger",
-	"item.httymd.gronckle_iron_battleaxe": "Gronckle Iron Battleaxe",
-	"item.httymd.gronckle_iron_mace": "Gronckle Iron Mace",
-	"item.httymd.gronckle_iron_club": "Gronckle Iron Club",
-	"item.httymd.gronckle_iron_spear": "Gronckle Iron Spear",
-	
-	"item.httymd.wood_dagger": "Wooden Dagger",
-	"item.httymd.stone_dagger": "Stone Dagger",
-	"item.httymd.iron_dagger": "Iron Dagger",
-	"item.httymd.gold_dagger": "Gold Dagger",
-	"item.httymd.diamond_dagger": "Diamond Dagger",
-	"item.httymd.wood_battleaxe": "Wooden Battleaxe",
-	"item.httymd.stone_battleaxe": "Stone Battleaxe",
-	"item.httymd.iron_battleaxe": "Iron Battleaxe",
-	"item.httymd.gold_battleaxe": "Gold Battleaxe",
-	"item.httymd.diamond_battleaxe": "Diamond Battleaxe",
-	"item.httymd.iron_mace": "Iron Mace",
-	"item.httymd.gold_mace": "Gold Mace",
-	"item.httymd.diamond_mace": "Diamond Mace",
-	"item.httymd.wood_club": "Wooden Club",
-	"item.httymd.stone_club": "Stone Club",
-	"item.httymd.iron_club": "Iron Club",
-	"item.httymd.gold_club": "Gold Club",
-	"item.httymd.diamond_club": "Diamond Club",
-	"item.httymd.wood_spear": "Wooden Spear",
-	"item.httymd.stone_spear": "Stone Spear",
-	"item.httymd.iron_spear": "Iron Spear",
-	"item.httymd.gold_spear": "Gold Spear",
-	"item.httymd.diamond_spear": "Diamond Spear",
-	
-	"item.httymd.gronckle_iron_helmet": "Gronckle Iron Helmet",
-	"item.httymd.gronckle_iron_chestplate": "Gronckle Iron Chestplate",
-	"item.httymd.gronckle_iron_leggings": "Gronckle Iron Leggings",
-	"item.httymd.gronckle_iron_boots": "Gronckle Iron Boots",
-	
-	"block.httymd.mud_block": "Mud",
-	
-	"entity.minecraft.terrible_terror": "Terrible Terror",
-	"entity.minecraft.yak": "Yak",
-	"entity.minecraft.boar": "Boar",
-	"entity.minecraft.eel": "Eel",
-	
-	"item.httymd.terrible_terror_spawn_egg": "Spawn Terrible Terror",
-	"item.httymd.yak_spawn_egg": "Spawn Yak",
-	"item.httymd.boar_spawn_egg": "Spawn Boar",
-	"item.httymd.eel_spawn_egg": "Spawn Eel",
-	
-	"itemGroup.httymd.tab": "How To Train Your Minecraft Dragon",
-	
-	"attribute.name.generic.reachDistance": "Attack Range"
+   "item.httymd.gronckle_iron_ingot": "Gronckle Iron Ingot",
+   "item.httymd.gronckle_iron_nugget": "Gronckle Iron Nugget",
+
+   "item.httymd.gronckle_iron_sword": "Gronckle Iron Sword",
+   "item.httymd.gronckle_iron_pickaxe": "Gronckle Iron Pickaxe",
+   "item.httymd.gronckle_iron_axe": "Gronckle Iron Axe",
+   "item.httymd.gronckle_iron_shovel": "Gronckle Iron Shovel",
+
+   "itemGroup.httymditems": "HTTYMD Mod"
 }

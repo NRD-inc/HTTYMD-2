@@ -1,24 +1,29 @@
-modLoader="javafml" #mandatory
-loaderVersion="[28,)" #mandatory (28 is current forge version)
-issueTrackerURL="https://github.com/NRD-inc/HTTYMD-2/issues" #optional
-displayURL="http://www.httymd.com/" #optional
-#logoFile="examplemod.png" #optional
-credits="Thank you, Dreamworks, for bringing this lovely franchise to life." #optional
-authors="Gwen, Lacy99, NukeRubberDucky, Tiki, Mnesikos" #optional
+modLoader="javafml"
+loaderVersion="[39,)"
+license="All Rights go to Dreamworks"
+issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/"
 
-[[mods]] #mandatory
-modId="httymd" #mandatory
-version="${version}" #mandatory
-displayName="How To Train Your Minecraft Dragon 2" #mandatory
-#updateJSONURL="http://myurl.me/" #optional
-# The description text for the mod (multi line!) (#mandatory)
-description='''
-A minecraft mod that bring the world of HTTYD to your game.
-'''
+[[mods]]
+modId="httymd"
+version="1.0"
+displayName="How to Train your Minecraft Dragon"
+#updateJSONURL=""
+displayURL=""
+logoFile="logo.png"
+credits=""
+authors="Mnesikos, ZephyraNF, Ersh Gem" #optional
+description='''A Minecraft mod that brings the world of How to Train your Dragon into the game!'''
 
-[[dependencies.httymd]] #optional
-    modId="forge" #mandatory
-    mandatory=true #mandatory
-    versionRange="[28,)" #mandatory
-    ordering="NONE"
-    side="BOTH"
+[[dependencies.httymd2]]
+modId="forge"
+mandatory=true
+versionRange="[39,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.httymd2]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.18.1,1.19)"
+ordering="NONE"
+side="BOTH"
